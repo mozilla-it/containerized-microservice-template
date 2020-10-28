@@ -1,9 +1,13 @@
-# python-library-template
+# containerized-microservice-template
 
 A github repo template using python3 with:
- - BDD testing strategies (using Gherkin and Behave through Tox)
+ - Using FastAPI framework (Pydantic, Swagger, included)
+ - BDD testing strategies (using Gherkin and Behave)
  - Python package control through **poetry**
  - **Pre-commit** for detecting secrets, typing, linting (Detect-Secrets,Mypy, Black)
+ - Containerization through **Docker**
+ - Build Pipeline through **GCP's Cloudbuild**
+ - Deployment yaml's for k8s
  - ...
 
 
