@@ -1,0 +1,6 @@
+{
+    "key_1": "{{page.EXAMPLE_KEY_1}}",
+    "key_2": "{{page.EXAMPLE_KEY_2}}",
+    "file_key": "example_file.json",
+    "example_num": 0.8
+}

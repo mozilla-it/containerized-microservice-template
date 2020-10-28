@@ -1,0 +1,4 @@
+steps:
+- id: docker build
+  name: 'docker'
+  args: ['build', '.']

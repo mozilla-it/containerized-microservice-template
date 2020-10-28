@@ -1,0 +1,80 @@
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "project_template"
+version = "0.1.1"
+description = "Template python repo with our proven approaches."
+authors = [
+    "Enterprise Integration Platform <enterprise-integration-platform@mozilla.com>",
+    "Adam Frank <afrank@mozilla.com>",
+    "Bryan Sieber <bsieber@mozilla.com>",
+    "Chris Valaas <cvalaas@mozilla.com>",
+    "Jorge Spiropulo <jspiropulo@mozilla.com>"
+]
+readme = "README.md"
+homepage = "https://github.com/mozilla-it/python-library-template"
+repository = "https://github.com/mozilla-it/python-library-template"
+documentation = "https://mozilla-it.github.io/python-library-template"
+
+classifiers = [
+    "Topic :: Software Development"
+]
+
+[tool.poetry.dependencies]
+# These packages are mandatory and form the core of this package’s distribution.
+python = ">=3.7, <4"
+google-cloud-logging = "*"
+tox = "*"
+sphinx = "*"
+coverage = "^5.2"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "*"
+
+# Note: Tox.skipsdist: Defaults to False but can be toggled to true if issues arise with the lack of a setup.py
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py37
+skipsdist =  True
+
+[testenv]
+deps =
+    behave
+    jinja2
+    coverage
+whitelist_externals =
+    poetry
+commands =
+    coverage run --branch -m behave tests/bdd
+    /bin/bash -c 'coverage run -a --branch -m unittest tests/unit/*py'
+    coverage report -m --fail-under 80
+    coverage html
+"""
+
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''

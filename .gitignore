@@ -1,0 +1,10 @@
+.idea/
+.tox/
+.mypy_cache/
+*pyc
+*.egg-info
+Pipfile.lock
+auto_docs/steps/*
+build
+.venv
+reports/
