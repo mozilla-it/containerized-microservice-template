@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -ex
+
+if [[ ! "$BRANCH_NAME" = "master" && ! "$BRANCH_NAME" = "prod" ]]; then
+	echo "$BRANCH_NAME is not a deployable branch. Stopping."
+	exit 0
+fi
+
+ENV=stage
+if [[ "$BRANCH_NAME" = "prod" ]]; then
+	ENV=$BRANCH_NAME
+fi
+
+for e in mozilla-api-${ENV}; do
+  cp k8s/deploy.yaml k8s/deploy-${e}.yaml
+  sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/deploy-${e}.yaml
+  gcloud config set project "$e"
+  stuff=($(gcloud container clusters list | grep "$e" | awk '{print $1,$2}'))
+  cluster=${stuff[0]}
+  zone=${stuff[1]}
+  gcloud container clusters get-credentials $cluster --zone=$zone
+  kubectl apply -f k8s/ns.yaml
+  kubectl apply -f k8s/deploy-${e}.yaml
+  kubectl -ncontainerized_microservice set env deployments/containerized_microservice DEPLOYED_ON=$(date +%s)
+done
