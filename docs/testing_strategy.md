@@ -4,8 +4,8 @@ We are using Behave and Jinja2 to templatize data for testing
 
 See Behave https://behave.readthedocs.io/en/latest/
 
-* The tests live in: tests/bdd/*.feature
-* The implementation for the tests live in: tests/bdd/steps/*.py
+* The tests live in: tests/behave/*.feature
+* The implementation for the tests live in: tests/behave/steps/*.py
 * The data resources the tests use live in: tests/resources/*
 * Where * is commonly the same feature to be tested and implemented
 
@@ -13,7 +13,7 @@ See Behave https://behave.readthedocs.io/en/latest/
 
 ### To write a new test:
 
-* Create a feature file for your test in tests/bdd/
+* Create a feature file for your test in tests/behave/
     - This file should describe your feature with different scenarios.
     - These feature files are written using the Gherkin language.
         - Gherkin is intended as a common language to bridge engineers and non-engineers.
@@ -22,7 +22,7 @@ See Behave https://behave.readthedocs.io/en/latest/
             - Given (some contextual set up)
             - When (this event occurs)
             - Then (this is the expected reaction and response)
-* Create implementation for your steps in tests/bdd/steps/
+* Create implementation for your steps in tests/behave/steps/
     - These steps are the glue code that maps the Gherkin files to operate and test the expected results and operations
     - This object should contain the mappings to the features you've created in the previous step.
     - Using Behave with the Gherkin files allows for the mapping to the behave decorators
@@ -44,13 +44,3 @@ And then running the installed behave with the folder path:
 >`behave tests/bdd/`
 
 <hr/>
-
-### Best Practices
-
-Tests best practices:\
-   Tests Should Be Trustworthy\
-   Tests Should Be Maintainable and Readable\
-   Tests Should Verify a Single-Use Case\
-   Tests Should Be Isolated\
-   Tests Should Be Automated\
-   Tests Should Be Executed Within an Organized Test Practice

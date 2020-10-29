@@ -37,3 +37,8 @@ Please ensure following the [Developer Setup](./docs/developer_setup.md) before 
 for this project to ensure correct environment setup.
 
 It is also suggested to view the [others docs as well](./docs/).
+
+### References
+- https://github.com/tiangolo/fastapi
+- https://github.com/samuelcolvin/pydantic
+- https://github.com/michael0liver/python-poetry-docker-example

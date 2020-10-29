@@ -8,3 +8,6 @@ auto_docs/steps/*
 build
 .venv
 reports/
+.coverage
+behave-reports/
+htmlcov/

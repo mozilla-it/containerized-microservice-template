@@ -3,71 +3,53 @@ requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry]
-name = "project_template"
-version = "0.1.1"
-description = "Template python repo with our proven approaches."
+name = "containerized_microservice_template"
+version = "0.0.1"
+description = "Template microservice repo."
 authors = [
-    "Enterprise Integration Platform <enterprise-integration-platform@mozilla.com>",
-    "Adam Frank <afrank@mozilla.com>",
     "Bryan Sieber <bsieber@mozilla.com>",
-    "Chris Valaas <cvalaas@mozilla.com>",
-    "Jorge Spiropulo <jspiropulo@mozilla.com>"
 ]
 readme = "README.md"
-homepage = "https://github.com/mozilla-it/python-library-template"
-repository = "https://github.com/mozilla-it/python-library-template"
-documentation = "https://mozilla-it.github.io/python-library-template"
+homepage = "https://github.com/mozilla-it/containerized-microservice-template"
+repository = "https://github.com/mozilla-it/containerized-microservice-template"
+documentation = "https://mozilla-it.github.io/containerized-microservice-template"
 
-classifiers = [
-    "Topic :: Software Development"
-]
 
 [tool.poetry.dependencies]
 # These packages are mandatory and form the core of this package’s distribution.
 python = ">=3.7, <4"
-google-cloud-logging = "*"
-tox = "*"
-sphinx = "*"
-coverage = "^5.2"
+pre-commit = "^2.7.1"
+fastapi = "^0.61.1"
+requests = "^2.24.0"
+uvicorn = "^0.12.2"
+gunicorn = "^20.0.4"
+
 
 [tool.poetry.dev-dependencies]
-pre-commit = "*"
+behave = "^1.2.6"
+pytest = "^6.1.2"
+isort = {extras = ["pyproject"], version = "^4.3.21"}
+black = "^20.8b1"
+coverage = {extras = ["toml"], version = "^5.3"}
 
-# Note: Tox.skipsdist: Defaults to False but can be toggled to true if issues arise with the lack of a setup.py
-[tool.tox]
-legacy_tox_ini = """
-[tox]
-isolated_build = True
-envlist = py37
-skipsdist =  True
-
-[testenv]
-deps =
-    behave
-    jinja2
-    coverage
-whitelist_externals =
-    poetry
-commands =
-    coverage run --branch -m behave tests/bdd
-    /bin/bash -c 'coverage run -a --branch -m unittest tests/unit/*py'
-    coverage report -m --fail-under 80
-    coverage html
-"""
-
+[tool.pytest.ini_options]
+python_files = "*.py"
+python_functions = "test_*"
+testpaths = [
+    "tests",
+]
 
 [tool.black]
 line-length = 88
 include = '\.pyi?$'
 exclude = '''
-
 (
   /(
       \.eggs         # exclude a few common directories in the
     | \.git          # root of the project
     | \.hg
     | \.mypy_cache
-    | \.tox
+    | \.pytest_cache
     | \.venv
     | _build
     | buck-out
@@ -78,3 +60,35 @@ exclude = '''
                      # the root of the project
 )
 '''
+
+[tool.isort]
+# https://github.com/timothycrosley/isort
+# https://github.com/timothycrosley/isort/wiki/isort-Settings
+line_length = 88
+indent = '    '
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+
+
+[tool.coverage]
+# https://github.com/nedbat/coveragepy
+    [tool.coverage.run]
+    omit = ['*/.local/*', '/usr/*','*/.venv/*','*/.tox/*']
+    # omit anything in a .local directory anywhere
+    # omit everything in /usr
+
+    [tool.coverage.report]
+
+    exclude_lines = [
+        "# noqa",
+        "raise NotImplementedError",
+        "pragma: no cover",
+        "def __repr__",
+        "if .debug:",
+        "raise NotImplementedError",
+        "if __name__ == .__main__.:",
+        "logger.",
+        "from",
+        "import"
+    ]
