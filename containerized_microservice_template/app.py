@@ -97,5 +97,13 @@ def example(request: ExampleAPIRequest):
 
 # TODO: Remove the Example above ----
 
+
+# NOTE:  This endpoint should provide a better proxy of "health".  It presently is a
+# better proxy for application availability as opposed to health.
+@app.get("/health")
+def health():
+    return {"health": "OK"}, 200
+
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="0.0.0.0", port=80, reload=True)
