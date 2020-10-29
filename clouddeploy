@@ -2,7 +2,7 @@
 
 set -ex
 
-if [[ ! "$BRANCH_NAME" = "master" && ! "$BRANCH_NAME" = "prod" ]]; then
+if [[ ! "$BRANCH_NAME" = "main" && ! "$BRANCH_NAME" = "prod" ]]; then
 	echo "$BRANCH_NAME is not a deployable branch. Stopping."
 	exit 0
 fi
