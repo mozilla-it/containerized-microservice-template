@@ -22,5 +22,5 @@ for e in mozilla-api-${ENV}; do
   gcloud container clusters get-credentials $cluster --zone=$zone
   kubectl apply -f k8s/ns.yaml
   kubectl apply -f k8s/deploy-${e}.yaml
-  kubectl -ncontainerized_microservice set env deployments/containerized_microservice DEPLOYED_ON=$(date +%s)
+  kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
 done
