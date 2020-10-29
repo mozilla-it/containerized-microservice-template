@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>containerized_microservice_template package &#8212; containerized_microservice_template 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="containerized-microservice-template-package">
+<h1>containerized_microservice_template package<a class="headerlink" href="#containerized-microservice-template-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-containerized_microservice_template.app">
+<span id="containerized-microservice-template-app-module"></span><h2>containerized_microservice_template.app module<a class="headerlink" href="#module-containerized_microservice_template.app" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="containerized_microservice_template.app.example">
+<code class="sig-prename descclassname">containerized_microservice_template.app.</code><code class="sig-name descname">example</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#containerized_microservice_template.models.ExampleAPIRequest" title="containerized_microservice_template.models.ExampleAPIRequest">containerized_microservice_template.models.ExampleAPIRequest</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.app.example" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST to /example with a HTTP Request consisting of a Body in the form of the ExampleAPIRequest model</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Args:</dt><dd><ul>
+<li><p><strong>request (ExampleAPIRequest)</strong>: JSON body upon HTTP Request in the ExampleAPIRequest model form</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Returns:</dt><dd><ul>
+<li><p><strong>response</strong>: returns the input request in the form of an ExampleAPIResponse model</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="containerized_microservice_template.app.post_api_by_models">
+<code class="sig-prename descclassname">containerized_microservice_template.app.</code><code class="sig-name descname">post_api_by_models</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#containerized_microservice_template.models.APIRequest" title="containerized_microservice_template.models.APIRequest">containerized_microservice_template.models.APIRequest</a></span> <span class="o">=</span> <span class="default_value">Body(Ellipsis)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.app.post_api_by_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST to /api with a JSON Body in the form of an APIRequest model.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Args:</dt><dd><ul>
+<li><p><strong>request (APIRequest)</strong>: JSON body upon HTTP Request in the APIRequest model form</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Returns:</dt><dd><ul>
+<li><p><strong>response</strong>: returns the input request in the APIResponse model form</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="containerized_microservice_template.app.post_with_path_body_and_query">
+<code class="sig-prename descclassname">containerized_microservice_template.app.</code><code class="sig-name descname">post_with_path_body_and_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_param</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">Path(Ellipsis)</span></em>, <em class="sig-param"><span class="n">request</span><span class="o">=</span><span class="default_value">Body(Ellipsis)</span></em>, <em class="sig-param"><span class="n">query_params</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">Query(None)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.app.post_with_path_body_and_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>POST to /api/{path_param} potentially with a JSON Body and optionally query params.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Args:</dt><dd><ul>
+<li><p><strong>path_param (str)</strong>: Path param desired to traverse</p></li>
+<li><p><strong>request (Body)</strong>: JSON body upon HTTP Request</p></li>
+<li><p><strong>query_params (Optional[str])</strong>: Query parameters can be provided if desired</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Returns:</dt><dd><ul>
+<li><p><strong>response</strong>: returns the input request</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt id="containerized_microservice_template.app.root">
+<code class="sig-prename descclassname">containerized_microservice_template.app.</code><code class="sig-name descname">root</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.app.root" title="Permalink to this definition">¶</a></dt>
+<dd><p>GET via root redirects to /docs.</p>
+<ul class="simple">
+<li><p>Args:</p></li>
+<li><dl class="simple">
+<dt>Returns:</dt><dd><ul>
+<li><p><strong>redirect</strong>: Redirects call to ./docs</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+</div>
+<div class="section" id="module-containerized_microservice_template.models">
+<span id="containerized-microservice-template-models-module"></span><h2>containerized_microservice_template.models module<a class="headerlink" href="#module-containerized_microservice_template.models" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="containerized_microservice_template.models.APIRequest">
+<em class="property">class </em><code class="sig-prename descclassname">containerized_microservice_template.models.</code><code class="sig-name descname">APIRequest</code><a class="headerlink" href="#containerized_microservice_template.models.APIRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="containerized_microservice_template.models.APIResponse">
+<em class="property">class </em><code class="sig-prename descclassname">containerized_microservice_template.models.</code><code class="sig-name descname">APIResponse</code><a class="headerlink" href="#containerized_microservice_template.models.APIResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">pydantic.main.BaseModel</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="containerized_microservice_template.models.ExampleAPIRequest">
+<em class="property">class </em><code class="sig-prename descclassname">containerized_microservice_template.models.</code><code class="sig-name descname">ExampleAPIRequest</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.models.ExampleAPIRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#containerized_microservice_template.models.APIRequest" title="containerized_microservice_template.models.APIRequest"><code class="xref py py-class docutils literal notranslate"><span class="pre">containerized_microservice_template.models.APIRequest</span></code></a></p>
+<dl class="py attribute">
+<dt id="containerized_microservice_template.models.ExampleAPIRequest.name">
+<code class="sig-name descname">name</code><em class="property">: str</em><a class="headerlink" href="#containerized_microservice_template.models.ExampleAPIRequest.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="containerized_microservice_template.models.ExampleAPIRequest.type">
+<code class="sig-name descname">type</code><em class="property">: Optional<span class="p">[</span>str<span class="p">]</span></em><a class="headerlink" href="#containerized_microservice_template.models.ExampleAPIRequest.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="containerized_microservice_template.models.ExampleAPIResponse">
+<em class="property">class </em><code class="sig-prename descclassname">containerized_microservice_template.models.</code><code class="sig-name descname">ExampleAPIResponse</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#containerized_microservice_template.models.ExampleAPIResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#containerized_microservice_template.models.APIResponse" title="containerized_microservice_template.models.APIResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">containerized_microservice_template.models.APIResponse</span></code></a></p>
+<dl class="py attribute">
+<dt id="containerized_microservice_template.models.ExampleAPIResponse.type">
+<code class="sig-name descname">type</code><em class="property">: Optional<span class="p">[</span>str<span class="p">]</span></em><a class="headerlink" href="#containerized_microservice_template.models.ExampleAPIResponse.type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-containerized_microservice_template">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-containerized_microservice_template" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">containerized_microservice_template</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, B.Sieber <bsieber@mozilla.com>.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/containerized_microservice_template.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
