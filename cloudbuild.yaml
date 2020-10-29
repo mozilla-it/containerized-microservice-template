@@ -8,7 +8,5 @@ steps:
   env:
   - 'BRANCH_NAME=$BRANCH_NAME'
   - 'SHORT_SHA=$SHORT_SHA'
-  - 'REPO_NAME=$REPO_NAME'
-  - 'PROJECT_ID=$PROJECT_ID'
   args:
   - '/workspace/clouddeploy'

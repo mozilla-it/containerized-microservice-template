@@ -16,7 +16,7 @@ spec:
         app: containerized-microservice-template
     spec:
       containers:
-      - image: gcr.io/@PROJECT_NAME@/github.com/mozilla-it/@REPO_NAME@:@SHORT_SHA@
+      - image: gcr.io/dp2-admin/github.com/mozilla-it/containerized-microservice-template:@SHORT_SHA@
         imagePullPolicy: Always
         name: containerized-microservice-template
         env:
