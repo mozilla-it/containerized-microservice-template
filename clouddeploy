@@ -2,7 +2,7 @@
 
 set -ex
 
-if [[ ! "$BRANCH_NAME" = "master" && ! "$BRANCH_NAME" = "prod" ]]; then
+if [[ ! "$BRANCH_NAME" = "main" && ! "$BRANCH_NAME" = "prod" ]]; then
 	echo "$BRANCH_NAME is not a deployable branch. Stopping."
 	exit 0
 fi
@@ -21,7 +21,9 @@ for e in mozilla-api-${ENV}; do
   zone=${stuff[1]}
   gcloud container clusters get-credentials $cluster --zone=$zone
   kubectl apply -f k8s/ns.yaml
-  kubectl apply -f k8s/svc.yaml
   kubectl apply -f k8s/deploy-${e}.yaml
+  kubectl apply -f k8s/cert.yaml
+  kubectl apply -f k8s/svc.yaml
+  kubectl apply -f k8s/ing.yaml
   kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
 done
