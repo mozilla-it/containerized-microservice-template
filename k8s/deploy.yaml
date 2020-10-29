@@ -15,13 +15,26 @@ spec:
       labels:
         app: containerized-microservice-template
     spec:
+      volumes:
+        - name: creds
+          secret:
+            secretName: containerized-microservice-template-secrets
+            items:
+              - key: creds.json
+                path: creds.json
       containers:
       - image: gcr.io/dp2-admin/github.com/mozilla-it/containerized-microservice-template:@SHORT_SHA@
         imagePullPolicy: Always
         name: containerized-microservice-template
         env:
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/opt/secrets/creds.json"
           - name: PROJECT
             value: "@PROJECT@"
+        volumeMounts:
+          - name: creds
+            mountPath: "/opt/secrets"
+            readOnly: true
         ports:
         - containerPort: 80
           protocol: TCP
