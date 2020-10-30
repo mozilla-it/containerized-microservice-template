@@ -8,10 +8,10 @@ if [[ ! "$BRANCH_NAME" = "main" && ! "$BRANCH_NAME" = "prod" ]]; then
 fi
 
 ENV=stage
-DOMAIN=api.allizom.org
+DOMAIN=api.data.allizom.org
 if [[ "$BRANCH_NAME" = "prod" ]]; then
 	ENV=$BRANCH_NAME
-	DOMAIN=api.mozilla.org
+	DOMAIN=api.data.mozilla.org
 fi
 
 for e in mozilla-api-${ENV}; do
