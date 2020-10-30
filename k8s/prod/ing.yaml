@@ -7,7 +7,7 @@ metadata:
       networking.gke.io/managed-certificates: containerized-microservice-template-cert
 spec:
   rules:
-  - host: jbi.api.data.mozilla.org
+  - host: example.api.data.mozilla.org
     http:
       paths:
       - path: /*

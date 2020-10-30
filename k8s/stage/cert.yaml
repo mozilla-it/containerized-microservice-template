@@ -5,4 +5,4 @@ metadata:
   namespace: containerized-microservice-template
 spec:
   domains:
-    - jbi.api.data.allizom.org
+    - example.api.data.allizom.org

@@ -5,4 +5,4 @@ metadata:
   namespace: containerized-microservice-template
 spec:
   domains:
-    - jbi.api.data.mozilla.org
+    - example.api.data.mozilla.org
