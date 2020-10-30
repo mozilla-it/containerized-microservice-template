@@ -26,9 +26,9 @@ for e in ${PROJ_ENV}; do
     cp k8s/deploy.yaml k8s/deploy-${e}.yaml
     sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/deploy-${e}.yaml
     cp k8s/deploy.yaml k8s/cert-${e}.yaml
-    sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/cert-${e}.yaml
+    sed -i -e "s|@SVC_NAME@|$SVC_NAME|g" -e "s|@FULL_DOMAIN@|$FULL_DOMAIN|g" k8s/cert-${e}.yaml
     cp k8s/deploy.yaml k8s/ing-${e}.yaml
-    sed -i -e "s|@SVC_NAME@|SVC_NAME|g" -e "s|@FULL_DOMAIN@|$FULL_DOMAIN|g" k8s/ing-${e}.yaml
+    sed -i -e "s|@SVC_NAME@|$SVC_NAME|g" -e "s|@FULL_DOMAIN@|$FULL_DOMAIN|g" k8s/ing-${e}.yaml
 
     gcloud config set project "$e"
     stuff=($(gcloud container clusters list | grep "$e" | awk '{print $1,$2}'))
