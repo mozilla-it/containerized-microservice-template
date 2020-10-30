@@ -38,8 +38,8 @@ for e in ${PROJ_ENV}; do
     kubectl apply -f k8s/ns.yaml
     kubectl apply -f k8s/deploy-${e}.yaml
     kubectl apply -f k8s/svc.yaml
-    kubectl apply -f k8s/${ENV}/ing.yaml
-    kubectl apply -f k8s/${ENV}/cert.yaml
+    kubectl apply -f k8s/ing-${e}.yaml
+    kubectl apply -f k8s/cert-${e}.yaml
     NEW_IP=`kubectl get ingress --namespace ${SVC_NAME} ${SVC_NAME}-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
     OLD_IP=`gcloud --project=${PROJ_ENV} dns record-sets list --zone="${ENV_ZONE}" | grep ^${FULL_DOMAIN} | sed "s/^.* //"`
     if [ "$OLD_IP" == "$NEW_IP" ]; then
