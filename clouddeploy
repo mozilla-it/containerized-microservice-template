@@ -25,6 +25,11 @@ ENV_ZONE=mozilla-api-${ENV}-zone
 for e in ${PROJ_ENV}; do
     cp k8s/deploy.yaml k8s/deploy-${e}.yaml
     sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/deploy-${e}.yaml
+    cp k8s/deploy.yaml k8s/cert-${e}.yaml
+    sed -i -e "s|@SVC_NAME@|$SVC_NAME|g" -e "s|@FULL_DOMAIN@|$FULL_DOMAIN|g" k8s/cert-${e}.yaml
+    cp k8s/deploy.yaml k8s/ing-${e}.yaml
+    sed -i -e "s|@SVC_NAME@|$SVC_NAME|g" -e "s|@FULL_DOMAIN@|$FULL_DOMAIN|g" k8s/ing-${e}.yaml
+
     gcloud config set project "$e"
     stuff=($(gcloud container clusters list | grep "$e" | awk '{print $1,$2}'))
     cluster=${stuff[0]}
@@ -33,8 +38,8 @@ for e in ${PROJ_ENV}; do
     kubectl apply -f k8s/ns.yaml
     kubectl apply -f k8s/deploy-${e}.yaml
     kubectl apply -f k8s/svc.yaml
-    kubectl apply -f k8s/${ENV}/ing.yaml
-    kubectl apply -f k8s/${ENV}/cert.yaml
+    kubectl apply -f k8s/ing-${e}.yaml
+    kubectl apply -f k8s/cert-${e}.yaml
     NEW_IP=`kubectl get ingress --namespace ${SVC_NAME} ${SVC_NAME}-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
     OLD_IP=`gcloud --project=${PROJ_ENV} dns record-sets list --zone="${ENV_ZONE}" | grep ^${FULL_DOMAIN} | sed "s/^.* //"`
     if [ "$OLD_IP" == "$NEW_IP" ]; then
