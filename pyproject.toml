@@ -8,6 +8,9 @@ version = "0.0.1"
 description = "Template microservice repo."
 authors = [
     "Bryan Sieber <bsieber@mozilla.com>",
+    "Chris Valaas <cvalaas@mozilla.com>",
+    "Stew Henderson <shenderson@mozilla.com>",
+    "Shraddha Patil <spatil@mozilla.com>",
 ]
 readme = "README.md"
 homepage = "https://github.com/mozilla-it/containerized-microservice-template"
