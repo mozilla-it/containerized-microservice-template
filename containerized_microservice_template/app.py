@@ -1,15 +1,14 @@
 from typing import List, Optional
 
 import uvicorn
-from fastapi import Body, FastAPI, Path, Query
-from fastapi.responses import RedirectResponse
-
 from containerized_microservice_template.models import (
     APIRequest,
     APIResponse,
     ExampleAPIRequest,
     ExampleAPIResponse,
 )
+from fastapi import Body, FastAPI, Path, Query
+from fastapi.responses import RedirectResponse
 
 app = FastAPI()
 

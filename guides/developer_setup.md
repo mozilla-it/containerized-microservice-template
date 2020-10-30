@@ -16,7 +16,7 @@ Install ALL deps including DEV dependencies:
 
 ### In Use
 Opens shell with corresponding dependencies to the poetry(.lock) in the directory that you make the call:
-> `poetry shell` 
+> `poetry shell`
 < Provides access to all the dependencies installed
 
 Runs command with poetry venv:
@@ -59,7 +59,7 @@ Install Docker here: https://docs.docker.com/get-docker/
 
 ### Building
 Build images with:
-> `docker build --tag containerized_microservice_template --file docker/Dockerfile .` 
+> `docker build --tag containerized_microservice_template --file docker/Dockerfile .`
 
 Stop the build at optional stages (development, lint, test, production) with the --target option:
 > `docker build --name containerized_microservice_template --file docker/Dockerfile . --target <stage>`

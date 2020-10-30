@@ -14,7 +14,7 @@ A github repo template using python3 with:
 
 [View All Docs](./guides/)
 - [Auto Documentation Setup](guides/auto_documentation.md)
-- [Deployment Guide](guides/deployment_guide.md) 
+- [Deployment Guide](guides/deployment_guide.md)
 - [Developer Setup](guides/developer_setup.md)
 - [First Steps](guides/first_steps.md)
 - [Testing Strategy](guides/testing_strategy.md)
@@ -37,11 +37,11 @@ The project is structured with the following in mind:
 - docs/
     - Auto-generated Sphinx docs live here.
 - guides/
-    - Documentation to guide others around the project interactions 
+    - Documentation to guide others around the project interactions
 - containerized_microservice_template/
     - Operational source code exists here
     - .../app.py
-        - FastAPI Handling of HTTP Requests and routing to services 
+        - FastAPI Handling of HTTP Requests and routing to services
     - .../models.py
         - Pydantic Models for Data Modeling, and Contract Validation
 - tests/behave/

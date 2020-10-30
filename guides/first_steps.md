@@ -42,4 +42,4 @@ Kill the running container with (teardown might take a few moments):
 
 View the app at (0.0.0.0/)[0.0.0.0/]
 
-You should be redirected to the /docs page. 
+You should be redirected to the /docs page.
