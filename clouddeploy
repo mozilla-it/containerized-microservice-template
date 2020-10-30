@@ -15,22 +15,32 @@ if [[ "$BRANCH_NAME" = "prod" ]]; then
 fi
 
 for e in mozilla-api-${ENV}; do
-  cp k8s/deploy.yaml k8s/deploy-${e}.yaml
-  sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/deploy-${e}.yaml
-  gcloud config set project "$e"
-  stuff=($(gcloud container clusters list | grep "$e" | awk '{print $1,$2}'))
-  cluster=${stuff[0]}
-  zone=${stuff[1]}
-  gcloud container clusters get-credentials $cluster --zone=$zone
-  kubectl apply -f k8s/ns.yaml
-  kubectl apply -f k8s/deploy-${e}.yaml
-  kubectl apply -f k8s/svc.yaml
-  kubectl apply -f k8s/ing.yaml
-  kubectl apply -f k8s/cert.yaml
-  IP=`kubectl get ingress --namespace containerized-microservice-template containerized-microservice-template-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
-  gcloud --project=mozilla-api-${ENV} dns record-sets transaction start --zone="mozilla-api-${ENV}-zone"
-  gcloud --project=mozilla-api-${ENV} dns record-sets transaction remove --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
-  gcloud --project=mozilla-api-${ENV} dns record-sets transaction add ${IP} --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
-  gcloud --project=mozilla-api-${ENV} dns record-sets transaction execute --zone="mozilla-api-${ENV}-zone"
-  kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
+    cp k8s/deploy.yaml k8s/deploy-${e}.yaml
+    sed -i -e "s|@SHORT_SHA@|$SHORT_SHA|g" -e "s|@PROJECT@|$e|g" k8s/deploy-${e}.yaml
+    gcloud config set project "$e"
+    stuff=($(gcloud container clusters list | grep "$e" | awk '{print $1,$2}'))
+    cluster=${stuff[0]}
+    zone=${stuff[1]}
+    gcloud container clusters get-credentials $cluster --zone=$zone
+    kubectl apply -f k8s/ns.yaml
+    kubectl apply -f k8s/deploy-${e}.yaml
+    kubectl apply -f k8s/svc.yaml
+    kubectl apply -f k8s/ing.yaml
+    kubectl apply -f k8s/cert.yaml
+    NEW_IP=`kubectl get ingress --namespace containerized-microservice-template containerized-microservice-template-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+    OLD_IP=`gcloud --project=mozilla-api-stage dns record-sets list --zone="mozilla-api-stage-zone" | grep ^jbi.api.data.allizom.org | sed "s/^.* //"`
+    if [ "$OLD_IP" == "$NEW_IP" ]; then
+      echo "No ingress IP change. No DNS action needed."
+    else
+      if [ "$OLD_IP" == "" ]; then
+          echo "No existing DNS record! Adding a new one."
+      elif [ "$OLD_IP" != "$NEW_IP" ]; then
+          echo "Ingress ip has changed! Deleting and readding."
+          gcloud --project=mozilla-api-${ENV} dns record-sets transaction remove --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
+      fi
+      gcloud --project=mozilla-api-${ENV} dns record-sets transaction start --zone="mozilla-api-${ENV}-zone"
+      gcloud --project=mozilla-api-${ENV} dns record-sets transaction add $NEW_IP --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
+      gcloud --project=mozilla-api-${ENV} dns record-sets transaction execute --zone="mozilla-api-${ENV}-zone"
+    fi
+    kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
 done
