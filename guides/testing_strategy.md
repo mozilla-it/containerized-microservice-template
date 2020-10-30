@@ -41,6 +41,10 @@ You can run the suite by shelling into poetry:
 >`poetry shell`
 
 And then running the installed behave with the folder path:
->`behave tests/bdd/`
+>`behave tests/behave/`
+
+### Using script
+You could also opt to use this script to perform the tests locally:
+>`poetry run scripts/test.sh`
 
 <hr/>
