@@ -7,7 +7,7 @@ metadata:
       networking.gke.io/managed-certificates: containerized-microservice-template-cert
 spec:
   rules:
-  - host: api.jbi.data.allizom.org
+  - host: jbi.api.allizom.org
     http:
       paths:
       - path: /*
