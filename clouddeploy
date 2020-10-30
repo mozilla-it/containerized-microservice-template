@@ -8,8 +8,10 @@ if [[ ! "$BRANCH_NAME" = "main" && ! "$BRANCH_NAME" = "prod" ]]; then
 fi
 
 ENV=stage
+DOMAIN=api.allizom.org
 if [[ "$BRANCH_NAME" = "prod" ]]; then
 	ENV=$BRANCH_NAME
+	DOMAIN=api.mozilla.org
 fi
 
 for e in mozilla-api-${ENV}; do
@@ -25,5 +27,9 @@ for e in mozilla-api-${ENV}; do
   kubectl apply -f k8s/svc.yaml
   kubectl apply -f k8s/ing.yaml
   kubectl apply -f k8s/cert.yaml
+  IP=`kubectl get ingress --namespace containerized-microservice-template containerized-microservice-template-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+  gcloud --project=mozilla-api-${ENV} dns record-sets transaction start --zone="mozilla-api-${ENV}-zone"
+  gcloud --project=mozilla-api-${ENV} dns record-sets transaction add 35.244.248.226 --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
+  gcloud --project=mozilla-api-${ENV} dns record-sets transaction execute --zone="mozilla-api-${ENV}-zone"
   kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
 done
