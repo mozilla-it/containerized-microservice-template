@@ -29,7 +29,7 @@ for e in mozilla-api-${ENV}; do
   kubectl apply -f k8s/cert.yaml
   IP=`kubectl get ingress --namespace containerized-microservice-template containerized-microservice-template-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
   gcloud --project=mozilla-api-${ENV} dns record-sets transaction start --zone="mozilla-api-${ENV}-zone"
-  gcloud --project=mozilla-api-${ENV} dns record-sets transaction add $IP --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
+  gcloud --project=mozilla-api-${ENV} dns record-sets transaction add ${IP} --name="jbi.${DOMAIN}" --ttl="30" --type="A" --zone="mozilla-api-${ENV}-zone"
   gcloud --project=mozilla-api-${ENV} dns record-sets transaction execute --zone="mozilla-api-${ENV}-zone"
   kubectl -ncontainerized-microservice-template set env deployments/containerized-microservice-template DEPLOYED_ON=$(date +%s)
 done
