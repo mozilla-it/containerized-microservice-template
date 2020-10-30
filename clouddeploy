@@ -25,8 +25,8 @@ for e in mozilla-api-${ENV}; do
     kubectl apply -f k8s/ns.yaml
     kubectl apply -f k8s/deploy-${e}.yaml
     kubectl apply -f k8s/svc.yaml
-    kubectl apply -f k8s/ing.yaml
-    kubectl apply -f k8s/cert.yaml
+    kubectl apply -f k8s/${ENV}/ing.yaml
+    kubectl apply -f k8s/${ENV}/cert.yaml
     NEW_IP=`kubectl get ingress --namespace containerized-microservice-template containerized-microservice-template-ing -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
     OLD_IP=`gcloud --project=mozilla-api-stage dns record-sets list --zone="mozilla-api-stage-zone" | grep ^jbi.api.data.allizom.org | sed "s/^.* //"`
     if [ "$OLD_IP" == "$NEW_IP" ]; then
