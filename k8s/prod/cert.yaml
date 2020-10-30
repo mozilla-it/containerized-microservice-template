@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1beta1
-kind: ManagedCertificate
-metadata:
-  name: containerized-microservice-template-cert
-  namespace: containerized-microservice-template
-spec:
-  domains:
-    - example.api.data.mozilla.org
