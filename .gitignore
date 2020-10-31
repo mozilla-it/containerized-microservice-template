@@ -11,3 +11,4 @@ reports/
 .coverage
 behave-reports/
 htmlcov/
+.isort.cfg
