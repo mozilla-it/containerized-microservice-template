@@ -1,8 +1,9 @@
 from behave import given, step, then, when
-from containerized_microservice_template.app import app
-from containerized_microservice_template.models import APIRequest, ExampleAPIRequest
 from fastapi.testclient import TestClient
 from pytest import fail
+
+from containerized_microservice_template.app import app
+from containerized_microservice_template.models import APIRequest, ExampleAPIRequest
 
 
 @given("the TestClient is setup")
