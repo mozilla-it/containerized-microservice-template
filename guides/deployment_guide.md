@@ -1,4 +1,7 @@
 # Deployment Guide
+
+- HTTP/S: REST-Based Service
+- Port: 80
 - Cloud Build: Build Pipeline
 - Kubernetes: Manifests for Deployment
 - Docker: Container Management
