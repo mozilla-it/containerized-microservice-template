@@ -35,6 +35,10 @@ repos:
       - id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
         exclude: "poetry.lock"
+  - repo: https://github.com/asottile/seed-isort-config
+    rev: v1.9.3
+    hooks:
+      - id: seed-isort-config
   - repo: https://github.com/PyCQA/isort
     rev: 4.3.21
     hooks:
