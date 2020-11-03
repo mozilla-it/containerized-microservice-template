@@ -8,14 +8,26 @@ for this project to ensure correct environment setup.
 After you've done the necessary developer setup, look through here for some quick first steps.
 
 ### Helpful Scripts
-Lint with isort and black:
+Lint with isort and black (or use pre-commit):
 > `poetry run scripts/lint.sh`
 
-Run build tests:
+Run the tests:
 > `poetry run scripts/test.sh`
 
-Run the full build, which creates a docker image from the docker/Dockerfile:
+Create a docker image:
 > `poetry run scripts/build.sh`
+
+Run the created image like so:
+> `poetry run scripts/run.sh`
+
+Kill all running images with this namespace:
+> `poetry run scripts/kill.sh`
+
+
+#### Hint
+These may need to be made executable...
+> chmod +x scripts/<file_name>
+
 
 ## Running the Server
 
@@ -38,8 +50,8 @@ Tail the logs with:
 Kill the running container with (teardown might take a few moments):
 > `docker stop <CONTAINER ID>`
 
+
 ## Viewing the Server
 
 View the app at [0.0.0.0/](0.0.0.0/)
-
 You should be redirected to the /docs page.

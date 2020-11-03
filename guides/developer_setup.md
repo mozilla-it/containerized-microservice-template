@@ -6,32 +6,32 @@ Technologies used: poetry, pre-commit, ...
 
 ## Installation
 Install Poetry for osx/linux:
-> `curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python`
+> curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
 Install prod dependencies in pyproject.toml through poetry:
-> `poetry install --no-dev`
+> poetry install --no-dev
 
 Install ALL deps including DEV dependencies:
-> `poetry install `
+> poetry install
 
 ### In Use
 Opens shell with corresponding dependencies to the poetry(.lock) in the directory that you make the call:
-> `poetry shell`
-< Provides access to all the dependencies installed
+> poetry shell
+> `Provides access to all the dependencies installed`
 
 Runs command with poetry venv:
-> `poetry run {command}`
+> poetry run {command}
 
 ### Adding Dependencies
 Add new dependencies in pyproject.toml through poetry:
-> `poetry add {pypi-package}`
+> poetry add {pypi-package}
 
 [...view poetry site for further documentation and details.](https://python-poetry.org/)
 
 ### Exiting Poetry Shell
 
 Run the following command to exit `poetry shell` while in a shell.
-> `exit`
+> exit
 
 The command `deactivate` will not work to full disengage the poetry shell as it does with `venv`.
 
@@ -40,17 +40,25 @@ The command `deactivate` will not work to full disengage the poetry shell as it 
 
 ### Installation
 Using poetry (pre-commit is located in the [pyproject.toml](../pyproject.toml) )
-> `poetry shell`
-> `pre-commit install`
+> poetry shell
+> pre-commit install
 
 You should get the following response after installing pre-commit into the githooks:
 
->`pre-commit installed at .git/hooks/pre-commit`
+> pre-commit installed at .git/hooks/pre-commit
 
-### Pre-commit, Run on the Entire Codebase
+Reinstall the pre-commit hooks when there are changes to the `.pre-commit-config.yaml` file.
+
+### Run on the Entire Codebase
 
 Run the following command where you installed pre-commit.
-> `pre-commit run --all-files`
+> pre-commit run --all-files
+
+### Passively Runs on Git "Commit"
+When you commit in git, the pre-commit hooks will engage and perform the outlined steps.
+
+#### Bypass Hook (Not Recommended)
+The option `--no-verify` should allow a committer to bypass the hooks.
 
 ## Docker
 
@@ -65,5 +73,12 @@ Stop the build at optional stages (development, lint, test, production) with the
 > `docker build --name containerized_microservice_template --file docker/Dockerfile . --target <stage>`
 
 #### Optional
-It is also possible to build the image through the provided scripts:
+It is also possible to build the full image through the provided scripts:
 > poetry run scripts/build.sh
+
+## Next Steps
+
+### Testing
+Please view the [Testing Strategy](guides/testing_strategy.md)
+
+[View All Docs](./guides/)
