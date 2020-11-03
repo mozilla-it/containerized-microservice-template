@@ -4,12 +4,12 @@ We are using Behave and Jinja2 to templatize data for testing
 
 See Behave https://behave.readthedocs.io/en/latest/
 
-* The tests live in: tests/behave/*.feature
-* The implementation for the tests live in: tests/behave/steps/*.py
-* The data resources the tests use live in: tests/resources/*
-* Where * is commonly the same feature to be tested and implemented
+- The tests live in: tests/behave/*.feature
+- The implementation for the tests live in: tests/behave/steps/*.py
+- The data resources the tests use live in: tests/resources/*
+- Where * is commonly the same feature to be tested and implemented
 
-<hr/>
+---
 
 ### To write a new test:
 
@@ -34,17 +34,15 @@ See Behave https://behave.readthedocs.io/en/latest/
         - Since nothing is yet implemented all your new tests should fail.
         - As you implement your tests should begin to pass.
 
-<hr/>
+---
 
 ### How to run the tests:
 You can run the suite by shelling into poetry:
->`poetry shell`
+> poetry shell
 
 And then running the installed behave with the folder path:
->`behave tests/behave/`
+> behave tests/behave/
 
 ### Using script
 You could also opt to use this script to perform the tests locally:
->`poetry run scripts/test.sh`
-
-<hr/>
+> poetry run scripts/test.sh
