@@ -1,5 +1,11 @@
 ## Developer Setup
-Technologies used: poetry, pre-commit, ...
+Technologies and tools in use:
+- Poetry: https://python-poetry.org/
+- Pre-commit: https://pre-commit.com/
+- Docker: https://www.docker.com/
+- FastAPI: https://fastapi.tiangolo.com/
+- Pydantic: https://pydantic-docs.helpmanual.io/
+- ...
 
 ---
 ## Poetry
@@ -17,6 +23,7 @@ Install ALL deps including DEV dependencies:
 ### In Use
 Opens shell with corresponding dependencies to the poetry(.lock) in the directory that you make the call:
 > poetry shell
+
 > `Provides access to all the dependencies installed`
 
 Runs command with poetry venv:
@@ -41,6 +48,7 @@ The command `deactivate` will not work to full disengage the poetry shell as it 
 ### Installation
 Using poetry (pre-commit is located in the [pyproject.toml](../pyproject.toml) )
 > poetry shell
+
 > pre-commit install
 
 You should get the following response after installing pre-commit into the githooks:
@@ -60,6 +68,7 @@ When you commit in git, the pre-commit hooks will engage and perform the outline
 #### Bypass Hook (Not Recommended)
 The option `--no-verify` should allow a committer to bypass the hooks.
 
+---
 ## Docker
 
 ### Installation
@@ -67,18 +76,39 @@ Install Docker here: https://docs.docker.com/get-docker/
 
 ### Building
 Build images with:
-> `docker build --tag containerized_microservice_template --file docker/Dockerfile .`
+> docker build --tag containerized_microservice_template --file docker/Dockerfile .
 
 Stop the build at optional stages (development, lint, test, production) with the --target option:
-> `docker build --name containerized_microservice_template --file docker/Dockerfile . --target <stage>`
+> docker build --name containerized_microservice_template --file docker/Dockerfile . --target <stage>
 
 #### Optional
 It is also possible to build the full image through the provided scripts:
 > poetry run scripts/build.sh
 
+---
+## FastAPI
+
+### Details
+Web-Framework for building APIs with Python that provides short, easy, and
+intuitive decorator-based annotations for routing (similar to Flask), but
+also provides OpenAPI and JSON Schema portals for API viewing.
+
+---
+## Pydantic
+
+### Details
+Data Modeling and validation package that enforces type hints at
+runtime and provides friendly errors for easy debugging.
+
+
+---
 ## Next Steps
+
+### Git Strategy
+Please view the [Git Strategy](guides/git_strategy.md)
 
 ### Testing
 Please view the [Testing Strategy](guides/testing_strategy.md)
 
+---
 [View All Docs](./guides/)

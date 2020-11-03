@@ -6,6 +6,7 @@
 - Kubernetes: Manifests for Deployment
 - Docker: Container Management
 
+---
 ## Cloud Build
 ### Details
 Cloud Build uses the [cloudbuild.yaml](../cloudbuild.yaml) file as a build pipeline using containerized images at each step.
@@ -22,7 +23,7 @@ Follow the article below to install the `cloud-build-local` and view additional 
 Run the following to build locally:
 > cloud-build-local --config=cloudbuild.yaml --dryrun=false
 
-
+---
 ## Kubernetes
 ### Details
 filename:intent
@@ -36,6 +37,7 @@ filename:intent
 There was also some infra setup required for providing permissions to the cloudbuilder to \
 push to different gcp projects as well as dns setup required.
 
+---
 ## Docker
 ### Details
 The docker image is a multistage build image.

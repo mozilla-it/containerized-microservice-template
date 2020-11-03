@@ -9,7 +9,7 @@ A github repo template using python3 with:
  - Build Pipeline through **GCP's Cloudbuild**
  - Deployment yaml's for k8s
 
-
+---
 ## Index
 
 [View All Docs](./guides/)
@@ -18,8 +18,9 @@ A github repo template using python3 with:
 - [Developer Setup](guides/developer_setup.md)
 - [First Steps](guides/first_steps.md)
 - [Testing Strategy](guides/testing_strategy.md)
+- [Git Strategy](guides/git_strategy.md)
 
-
+---
 ## Prerequisites
 
 Please ensure following the [Developer Setup](guides/developer_setup.md) before developing \
@@ -30,6 +31,7 @@ the server, scripts, and docker.
 
 [Others docs here as well](./guides/).
 
+---
 ## Project Structure
 
 The project is structured with the following in mind:
@@ -49,7 +51,7 @@ The project is structured with the following in mind:
 - tests/resources/
     - Resources of various files types, exist here
 
-
+---
 ## References & Regards
 - https://github.com/tiangolo/fastapi
 - https://github.com/samuelcolvin/pydantic
