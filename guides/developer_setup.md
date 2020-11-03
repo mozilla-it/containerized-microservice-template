@@ -14,6 +14,7 @@ Technologies and tools in use:
 Install Poetry for osx/linux:
 > curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 
+## Install Dependencies
 Install prod dependencies in pyproject.toml through poetry:
 > poetry install --no-dev
 
@@ -33,8 +34,6 @@ Runs command with poetry venv:
 Add new dependencies in pyproject.toml through poetry:
 > poetry add {pypi-package}
 
-[...view poetry site for further documentation and details.](https://python-poetry.org/)
-
 ### Exiting Poetry Shell
 
 Run the following command to exit `poetry shell` while in a shell.
@@ -42,10 +41,12 @@ Run the following command to exit `poetry shell` while in a shell.
 
 The command `deactivate` will not work to full disengage the poetry shell as it does with `venv`.
 
+[...view poetry site for further documentation and details.](https://python-poetry.org/)
+
 ---
 ## Pre-commit
 
-### Installation
+### Install the Hooks
 Using poetry (pre-commit is located in the [pyproject.toml](../pyproject.toml) )
 > poetry shell
 
