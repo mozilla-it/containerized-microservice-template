@@ -106,10 +106,10 @@ runtime and provides friendly errors for easy debugging.
 ## Next Steps
 
 ### Git Strategy
-Please view the [Git Strategy](guides/git_strategy.md)
+Please view the [Git Strategy](git_strategy.md)
 
 ### Testing
-Please view the [Testing Strategy](guides/testing_strategy.md)
+Please view the [Testing Strategy](testing_strategy.md)
 
 ---
-[View All Docs](./guides/)
+[View All Docs](./)
