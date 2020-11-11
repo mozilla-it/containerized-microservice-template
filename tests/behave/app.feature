@@ -1,6 +1,4 @@
-# Created by bsieber at 10/28/20
 Feature: FastAPI HTTP Application Behave Tests
-  # Enter feature description here
 
   Background:
     Given the TestClient is setup
