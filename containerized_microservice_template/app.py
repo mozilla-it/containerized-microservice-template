@@ -11,7 +11,11 @@ from containerized_microservice_template.models import (
     ExampleAPIResponse,
 )
 
-app = FastAPI()
+app = FastAPI(
+    title="Containerized Microservice",
+    description="Containerized microservice template with some examples.",
+    version="0.1.0",
+)
 
 
 @app.get("/")
