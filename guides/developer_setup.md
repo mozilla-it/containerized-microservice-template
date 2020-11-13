@@ -101,7 +101,6 @@ also provides OpenAPI and JSON Schema portals for API viewing.
 Data Modeling and validation package that enforces type hints at
 runtime and provides friendly errors for easy debugging.
 
-
 ---
 ## Next Steps
 
