@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: containerized-microservice-template
-  namespace: containerized-microservice-template
+  name: @SVC_NAME@
+  namespace: @NAMESPACE@
 spec:
   type: NodePort
   selector:
-    app: containerized-microservice-template
+    app: @SVC_NAME@
   ports:
   - name: http
     port: 80
