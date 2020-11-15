@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: @SVC_NAME@-ing
-  namespace: @SVC_NAME@
+  namespace: @NAMESPACE@
   annotations:
       networking.gke.io/managed-certificates: @SVC_NAME@-cert
 spec:

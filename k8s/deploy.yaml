@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: containerized-microservice-template
-  name: containerized-microservice-template
-  namespace: containerized-microservice-template
+    app: @SVC_NAME@
+  name: @SVC_NAME@
+  namespace: @NAMESPACE@
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: containerized-microservice-template
+      app: @SVC_NAME@
   template:
     metadata:
       labels:
-        app: containerized-microservice-template
+        app: @SVC_NAME@
     spec:
       containers:
-      - image: gcr.io/dp2-admin/github.com/mozilla-it/containerized-microservice-template:@SHORT_SHA@
+      - image: gcr.io/dp2-admin/github.com/mozilla-it/@SVC_NAME@:@SHORT_SHA@
         imagePullPolicy: Always
-        name: containerized-microservice-template
+        name: @SVC_NAME@
         env:
           - name: PROJECT
             value: "@PROJECT@"
