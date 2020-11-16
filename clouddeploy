@@ -49,7 +49,9 @@ for e in ${PROJ_ENV}; do
           echo "No existing DNS record! Adding a new one."
       elif [ "$OLD_IP" != "$NEW_IP" ]; then
           echo "Ingress ip has changed! Deleting and readding."
-          gcloud --project=${PROJ_ENV} dns record-sets transaction remove --name="${FULL_DOMAIN}" --ttl="30" --type="A" --zone="${ENV_ZONE}"
+          gcloud --project=${PROJ_ENV} dns record-sets transaction start --zone="${ENV_ZONE}"
+          gcloud --project=${PROJ_ENV} dns record-sets transaction remove $OLD_IP --name="${FULL_DOMAIN}" --ttl="30" --type="A" --zone="${ENV_ZONE}"
+          gcloud --project=${PROJ_ENV} dns record-sets transaction execute --zone="${ENV_ZONE}"
       fi
       gcloud --project=${PROJ_ENV} dns record-sets transaction start --zone="${ENV_ZONE}"
       gcloud --project=${PROJ_ENV} dns record-sets transaction add $NEW_IP --name="${FULL_DOMAIN}" --ttl="30" --type="A" --zone="${ENV_ZONE}"
