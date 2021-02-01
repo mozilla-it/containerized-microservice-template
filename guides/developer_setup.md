@@ -80,7 +80,7 @@ Build images with:
 > docker build --tag containerized_microservice_template --file docker/Dockerfile .
 
 Stop the build at optional stages (development, lint, test, production) with the --target option:
-> docker build --name containerized_microservice_template --file docker/Dockerfile . --target <stage>
+> docker build --tag containerized_microservice_template --file docker/Dockerfile . --target <stage>
 
 #### Optional
 It is also possible to build the full image through the provided scripts:
