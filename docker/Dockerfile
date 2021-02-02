@@ -66,6 +66,8 @@ CMD ["uvicorn", "--reload", "--host=0.0.0.0", "--port=8000", "main:app"]
 FROM development AS lint
 RUN isort --settings-path ./pyproject.toml --recursive --check-only
 RUN black --config ./pyproject.toml --check containerized_microservice_template tests
+RUN mypy --no-strict-optional --ignore-missing-imports containerized_microservice_template
+RUN bandit -lll --recursive containerized_microservice_template --exclude "containerized_microservice_template/poetry.lock,containerized_microservice_template/.venv,containerized_microservice_template/.mypy,containerized_microservice_template/build"
 CMD ["tail", "-f", "/dev/null"]
 
 
