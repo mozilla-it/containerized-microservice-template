@@ -1,5 +1,7 @@
 # containerized-microservice-template
 
+**The projects that use this repository have been decommissioned. [See more here](https://mana.mozilla.org/wiki/display/SRE/Mozilla+API+Tombstone).**
+
 A github repo template using python3 with:
  - Using FastAPI framework (Pydantic, Swagger, included)
  - BDD testing strategies (using Gherkin and Behave)
